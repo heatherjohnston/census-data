@@ -1,3 +1,3 @@
-# Working with census data
+# Working with census data using R package `tidycensus`
 
-I'm using this repository for documentation for myself for working with Census data. I also hope to write up some tutorials to put on my website. 
+This repository serves as a quick tutorial for how to get started with the `tidycensus` R package, maintained by [Kyle Walker](https://github.com/walkerke/tidycensus). 

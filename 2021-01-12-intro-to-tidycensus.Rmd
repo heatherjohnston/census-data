@@ -1,10 +1,11 @@
 ---
-title: Tutorial: Getting Census Data with Tidycensus for R Beginners
+title: 'Tutorial: Getting Census Data with Tidycensus for R Beginners'
 author: Heather Johnston
 date: '2021-01-12'
 slug: intro-to-tidycensus
 categories: []
 tags: []
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
@@ -64,7 +65,7 @@ concepts %>% View()
 You may notice that some of these apply to the household, while some apply to individuals within the household. For more information, read the Census Bureau's [Summary File 1 documentation](https://www.census.gov/prod/cen2010/doc/sf1.pdf). Let's say for this example that I simply want race and sex estimates. I notice that there is a "RACE" concept listed. Excellent! However, there is no concept listed which is just "SEX" alone without any other qualifiers. Therefore, I will choose the simplest, which is "SEX BY AGE". Now I need to find the variable names for these. For this, I will use dplyr's "filter" function to list all the relevant variables. Again, I'll use the viewer pane.
 
 ```{r}
-variables %>% filter(concept == "RACE") %>% view()
+variables %>% filter(concept == "RACE") %>% View()
 ```
 
 There are a lot of options here. In order to keep my analysis manageable, I'll have to consider only a few racial categories. Luckily, there is a pattern. The first few are a shortened list of race categories, and all their names begin with the prefix "P003". This makes my job easier. I can just select those variables with prefix "P003". In order to select those with only a prefix, I'll use the "str_detect" function from the stringr package. This checks the name "column" to see whether the prefix matches. 
@@ -76,10 +77,10 @@ race_variable_names = variables %>% filter(concept == "RACE" & str_detect(name, 
 Now I want to choose my sex variable names. 
 
 ```{r}
-variables %>% filter(concept == "SEX BY AGE") %>% view()
+variables %>% filter(concept == "SEX BY AGE") %>% View()
 ```
 
-I can see by looking in the viewer pane that there are two I need. Although I could use regular expression again, I actually think this is a time when copying-and-pasting is preferable.  
+I can see by looking in the viewer pane that there are two I need. Although I could use regular expressions again, I actually think this is a time when copying-and-pasting is preferable.  
 
 ```{r}
 sex_variable_names = variables %>% filter(name == "P012002" | name == "P012026") %>% select(-concept)

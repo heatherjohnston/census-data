@@ -28,7 +28,7 @@ tidycensus::census_api_key("abcdefghijklmnopqrstuvwxyz", install = TRUE)
 ```
  
 Now you will need to restart R in order for the API key to work.
- 
+
 Then, everytime you start a new R session with the intention of accessing Census data, you will need to load the package using the "library" function. For this project, we will also use the packages dplyr, stringr, and ggplot2. If you have never used those packages before, you can install them using `install.packages("dplyr")`, `install.packages("stringr")`, and `install.packages("ggplot2")`.
  
 ```{r, warning = FALSE}
